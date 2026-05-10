@@ -1,0 +1,57 @@
+.nav-scroll-container {
+  width: 100%;
+  overflow-x: auto; // 當內容超出寬度時，允許水平滾動
+  white-space: nowrap; // 強制子元素不換行
+  -webkit-overflow-scrolling: touch; // 賦予流暢滑動阻尼感
+
+  // 隱藏滾動條
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.custom-nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.nav-item {
+  display: inline-block;
+  padding: 8px 12px;
+  color: $neutral-700;
+  cursor: pointer;
+  transition: all 0.2 ease-in;
+  flex-shrink: 0;
+}
+.nav-item:hover {
+  background-color: $primary-100;
+  color: $neutral-0;
+}
+
+.nav-item.active {
+  background-color: $primary-900;
+  color: $neutral-0;
+}
+
+@media (min-width: 992px) {
+  .nav-scroll-container {
+    overflow-x: visible; // 關閉水平滾動
+    white-space: normal; // 恢復正常換行
+  }
+
+  .custom-nav {
+    flex-direction: column; // 關鍵：將橫排改為「直立排列」
+    align-items: stretch; // 讓按鈕寬度一併撐滿
+    text-align: center; // 文字置中
+    gap: 8px;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .nav-item {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+  }
+}
